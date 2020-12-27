@@ -118,38 +118,36 @@ Add the following to /etc/network/interfaces to raspberry pi file system
 
 >iface wlan0 inet dhcp
 
->        wireless_mode managed
+>  wireless_mode managed
 
->        wpa-conf /etc/wpa_supplicant.conf
+>  wpa-conf /etc/wpa_supplicant.conf
 
->        post-up /etc/activate_wlan0.sh
+>  post-up /etc/activate_wlan0.sh
 
 Inside 
 
->touch /etc/activate_wlan0.sh
+>  touch /etc/activate_wlan0.sh
 
->chmod a+x /etc/activate_wlan0.sh
+>  chmod a+x /etc/activate_wlan0.sh
 
->#!/bin/bash
+>  #!/bin/bash
 
->ifdown wlan0
+>  ifdown wlan0
 
->ifup wlan0
+>  ifup wlan0
 
 ### Tip 2 (on microSD card before booting, configure your WiFi SSID and passphrase in etc/wpa_supplicant.conf file)
 
->ctrl_interface=/var/run/wpa_supplicant
+>  ctrl_interface=/var/run/wpa_supplicant
 
->ap_scan=1
+>  ap_scan=1
 
->
+>  network={
 
->network={
+>     key_mgmt=WPA-PSK
 
->    key_mgmt=WPA-PSK
+>     ssid="<ssid>"
 
->    ssid="<ssid>"
+>     psk="<passphrase>"
 
->    psk="<passphrase>"
-
->}
+> }
