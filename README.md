@@ -88,9 +88,11 @@ To control the Servo follow the wiring diagram where
 
 http://www.ee.ic.ac.uk/pcheung/teaching/DE1_EE/stores/sg90_datasheet.pdf
 
-The Red wire on SG90 <-----> 5V power on Raspberry pi (pin 2)
-The Brown wire on SG90 <-----> GND on Raspberry pi (pin 9)
-The Orange wire on SG90 <-----> GPIO pin 17 on Raspberry pi (pin 11)
+>The Red wire on SG90 <-----> 5V power on Raspberry pi (pin 2)
+
+>The Brown wire on SG90 <-----> GND on Raspberry pi (pin 9)
+
+>The Orange wire on SG90 <-----> GPIO pin 17 on Raspberry pi (pin 11)
 
 Copy the script (scp to Raspberry pi)
 
@@ -111,28 +113,43 @@ If using Wifi wlan0 on raspberry pi then
 Add the following to /etc/network/interfaces to raspberry pi file system
 
 >auto wlan0
+
 >allow-hotplug wlan0
+
 >iface wlan0 inet dhcp
+
 >        wireless_mode managed
+
 >        wpa-conf /etc/wpa_supplicant.conf
+
 >        post-up /etc/activate_wlan0.sh
 
 Inside 
 
 >touch /etc/activate_wlan0.sh
+
 >chmod a+x /etc/activate_wlan0.sh
 
 >#!/bin/bash
+
 >ifdown wlan0
+
 >ifup wlan0
 
 ### Tip 2 (on microSD card before booting, configure your WiFi SSID and passphrase in etc/wpa_supplicant.conf file)
 
 >ctrl_interface=/var/run/wpa_supplicant
+
 >ap_scan=1
+
 >
+
 >network={
+
 >    key_mgmt=WPA-PSK
+
 >    ssid="<ssid>"
+
 >    psk="<passphrase>"
+
 >}
