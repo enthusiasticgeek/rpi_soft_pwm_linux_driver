@@ -8,9 +8,11 @@ I have tested with **SG90** Servo Motor
 
 ### Option 1 -> (No Yocto) Standalone Linux Driver:
 
->cd  
+### Assuming one copies this servo-mod folder to raspberry pi
 
->make -f Makefile.NoYocto
+> cd  [path to this repo]/rpi_soft_pwm_linux_driver/servo-mod/files/
+
+> make -f Makefile.NoYocto
 
 ### Option 2 -> Yocto Linux Driver with OS Integration (Poky Reference):
 
@@ -30,35 +32,35 @@ https://jumpnowtek.com/rpi/Raspberry-Pi-Systems-with-Yocto.html (64-bit OS)
 
 Change 1: Copy the servo-mod PWM Servo Linux Driver directory inside meta-jumpnow/kernel-receipes
 
->cd [path to this repo]/rpi_soft_pwm_linux_driver 
+> cd [path to this repo]/rpi_soft_pwm_linux_driver 
 
->cp -a ./servo-mod ~/poky-dunfell/meta-jumpnow/recipes-kernel/servo-mod
+> cp -a ./servo-mod ~/poky-dunfell/meta-jumpnow/recipes-kernel/servo-mod
 
->cd -
+> cd -
 
 Change 2: Copy the bblayers.conf and local.conf to ~/rpi/build
 
->cp ./conf/{bblayers.conf,local.conf} ~/rpi/build
+> cp ./conf/{bblayers.conf,local.conf} ~/rpi/build
 
 ### Assuming one keeps all the default locations as explained in the above tutorial
 
->cd ~/rpi/build
+> cd ~/rpi/build
 
->bitbake console-image
+> bitbake console-image
 
 ### This piece of software has been tested with Raspberry Pi B+. It is expected to work with Rpi 0/1/2/3/4 with one change in the Linux Driver code
 
->#define SOC_PERI_BASE       RPI1_PERI_BASE      //<------------------- Replace this MACRO with appropriate Raspberry pi prior to compiling or building Yocto
+> #define SOC_PERI_BASE       RPI1_PERI_BASE      //<------------------- Replace this MACRO with appropriate Raspberry pi prior to compiling or building Yocto
 
 Example for Raspberry Pi 4
 
->#define SOC_PERI_BASE       RPI4_PERI_BASE     
+> #define SOC_PERI_BASE       RPI4_PERI_BASE     
 
 ### To just build the servo kernel module after any code changes to servo.c file (This assumes the above command has been run once)
 
->cd ~/rpi/build
+> cd ~/rpi/build
 
->bitbake -c cleansstate servo-mod && bitbake servo-mod
+> bitbake -c cleansstate servo-mod && bitbake servo-mod
 
 The process to load files on boot and rootfs partitions on microSD/SSD card is listed above 
 
@@ -66,13 +68,13 @@ The driver will autoload upon OS boot
 
 To load driver on raspberry pi from
 
->ls /lib/modules/5.4.83/kernel/servo/servo.ko
+> ls /lib/modules/5.4.83/kernel/servo/servo.ko
 
->modprobe servo.ko
+> modprobe servo.ko
 
 or from the (~) home directory on raspberry pi
 
->insmod servo.ko
+> insmod servo.ko
 
 Ensure the driver is loaded
 
@@ -88,19 +90,19 @@ To control the Servo follow the wiring diagram where
 
 http://www.ee.ic.ac.uk/pcheung/teaching/DE1_EE/stores/sg90_datasheet.pdf
 
->The Red wire on SG90 <-----> 5V power on Raspberry pi (pin 2)
+> The Red wire on SG90 <-----> 5V power on Raspberry pi (pin 2)
 
->The Brown wire on SG90 <-----> GND on Raspberry pi (pin 9)
+> The Brown wire on SG90 <-----> GND on Raspberry pi (pin 9)
 
->The Orange wire on SG90 <-----> GPIO pin 17 on Raspberry pi (pin 11)
+> The Orange wire on SG90 <-----> GPIO pin 17 on Raspberry pi (pin 11)
 
 Copy the script (scp to Raspberry pi)
 
->scp sg90servo_example.sh root@<raspberry pi ip>:~
+> scp sg90servo_example.sh root@<raspberry pi ip>:~
 
 on raspberry pi
 
->chmod a+x sg90servo_example.sh
+> chmod a+x sg90servo_example.sh
 
 To turn motor back and forth 3 times run
 
