@@ -144,10 +144,10 @@ Inside
 
 >  network={
 
->     key_mgmt=WPA-PSK
+>   key_mgmt=WPA-PSK
 
->     ssid="<ssid>"
+>   ssid="<ssid>"
 
->     psk="<passphrase>"
+>   psk="<passphrase>"
 
 > }
