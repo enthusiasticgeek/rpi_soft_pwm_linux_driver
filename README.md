@@ -98,7 +98,7 @@ http://www.ee.ic.ac.uk/pcheung/teaching/DE1_EE/stores/sg90_datasheet.pdf
 
 Copy the script (scp to Raspberry pi)
 
-> scp sg90servo_example.sh root@<raspberry pi ip>:~
+> scp sg90servo_example.sh root@[raspberry pi ip]:~
 
 on raspberry pi
 
@@ -148,8 +148,8 @@ Inside
 
 >   key_mgmt=WPA-PSK
 
->   ssid="<ssid>"
+>   ssid="[ssid]"
 
->   psk="<passphrase>"
+>   psk="[passphrase]"
 
 > }
