@@ -24,7 +24,7 @@ The following URLs contain all the documentation (barring a few changes listed b
 
 https://jumpnowtek.com/rpi/Raspberry-Pi-Systems-with-Yocto.html (32-bit OS)
 
-https://jumpnowtek.com/rpi/Raspberry-Pi-Systems-with-Yocto.html (64-bit OS)
+https://jumpnowtek.com/rpi/Raspberry-Pi-4-64bit-Systems-with-Yocto.html (64-bit OS)
 
 ### Follow the instructions on the above URL meticulously with the following changes
 
