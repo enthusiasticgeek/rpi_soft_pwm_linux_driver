@@ -8,7 +8,11 @@ I have tested with **SG90** Servo Motor
 
 ### Option 1 -> (No Yocto) Standalone Linux Driver:
 
-### Assuming one copies this servo-mod folder to raspberry pi
+### Assuming one copies this servo-mod folder to raspberry pi (Note: This needs Linux Kernel Headers)
+
+On Raspberry Pi OS the Linux Kernel Headers can be installed as follows https://www.raspberrypi.org/documentation/linux/kernel/headers.md
+
+> sudo apt install raspberrypi-kernel-headers
 
 > cd  [path to this repo]/rpi_soft_pwm_linux_driver/servo-mod/files/
 
