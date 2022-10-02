@@ -44,7 +44,7 @@ Change 1: Copy the servo-mod PWM Servo Linux Driver directory inside meta-jumpno
 
 Change 2: Copy the bblayers.conf and local.conf to ~/rpi/build
 
-> cp ./conf/{bblayers.conf,local.conf} ~/rpi/build
+> cp ./conf/{bblayers.conf,local.conf} ~/rpi/build/conf
 
 ### Assuming one keeps all the default locations as explained in the above tutorial
 
